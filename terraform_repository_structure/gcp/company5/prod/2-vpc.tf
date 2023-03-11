@@ -4,8 +4,8 @@ resource "google_project_service" "compute"{
 resource "google_project_service" "container"{
   service = "container.googleapis.com"
 }
-resource "google_compute_network" "main"{
-  name = "main"
+resource "google_compute_network" "main-vpc"{
+  name = "main-vpc"
   routing_mode = "REGIONAL"
   auto_create_subnetworks = false
   delete_default_routes_on_create = false
