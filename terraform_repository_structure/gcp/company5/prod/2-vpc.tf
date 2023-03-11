@@ -1,9 +1,11 @@
-resource "google_project_service" "compute"{
+resource "google_project_service" "compute" {
   service = "compute.googleapis.com"
 }
-resource "google_project_service" "container"{
+
+resource "google_project_service" "container" {
   service = "container.googleapis.com"
 }
+
 #resource "google_compute_network" "main-vpc"{
 #  name = "main-vpc"
 #  routing_mode = "REGIONAL"
