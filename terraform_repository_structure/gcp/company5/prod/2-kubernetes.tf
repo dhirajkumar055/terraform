@@ -8,7 +8,7 @@ resource "google_project_service" "container" {
 
 resource "google_container_cluster" "k8s-cluster"{
   name = "dheeraj-company5-prod-gcp-k8s-cluster"
-  location = "asia-south1-a"
+  location = "us-east1-a"
   remove_default_node_pool = true
   initial_node_count = 1
   #network = google_compute_network.main.self_link
@@ -20,7 +20,7 @@ resource "google_container_cluster" "k8s-cluster"{
   networking_mode = "VPC_NATIVE"
 
   node_locations = [
-    "asia-south1-b"
+    "us-east1-b"
   ]
   addons_config {
     http_load_balancing {
@@ -37,8 +37,8 @@ resource "google_container_cluster" "k8s-cluster"{
     workload_pool = "dataloop-candidate-environment.svc.id.goog"
   }
   ip_allocation_policy{
-    cluster_secondary_range_name = "dheeraj-company5-prod-k8s-pod-range"
-    services_secondary_range_name = "dheeraj-company5-prod-k8s-service-range"
+    cluster_secondary_range_name = "ip-range-pod"
+    services_secondary_range_name = "ip-range-svc"
     #cluster_secondary_range_name = "10.160.0.0/21"
     #services_secondary_range_name = "10.160.8.0/21"
     #cluster_secondary_range_name = "default"

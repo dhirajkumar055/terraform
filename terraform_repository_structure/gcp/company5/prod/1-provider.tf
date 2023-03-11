@@ -14,5 +14,5 @@ terraform {
 provider "google" {
   # Configuration options
   project = "dataloop-candidate-environment"
-  region  = "asia-south1"
+  region  = "us-east1"
 }
