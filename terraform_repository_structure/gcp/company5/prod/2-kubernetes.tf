@@ -8,7 +8,7 @@ resource "google_project_service" "container" {
 
 resource "google_container_cluster" "k8s-cluster"{
   name = "dheeraj-company5-prod-gcp-k8s-cluster"
-  location = "us-east1-a"
+  location = "us-east1-b"
   remove_default_node_pool = true
   initial_node_count = 1
   #network = google_compute_network.main.self_link
@@ -20,7 +20,7 @@ resource "google_container_cluster" "k8s-cluster"{
   networking_mode = "VPC_NATIVE"
 
   node_locations = [
-    "us-east1-b"
+    "us-east1-d"
   ]
   addons_config {
     http_load_balancing {
