@@ -31,7 +31,7 @@ resource "google_container_cluster" "k8s-cluster"{
   ip_allocation_policy{
     #cluster_secondary_range_name = "k8s-pod-range"
     cluster_secondary_range_name = "10.160.0.0/21"
-    services_secondary_range_naem = "10.160.8.0/21"
+    services_secondary_range_name = "10.160.8.0/21"
     #services_secondary_range_naem = "k8s-service-range"
   }
   private_cluster_config{
