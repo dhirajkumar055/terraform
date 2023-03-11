@@ -12,9 +12,9 @@ resource "google_container_cluster" "k8s-cluster"{
   remove_default_node_pool = true
   initial_node_count = 1
   #network = google_compute_network.main.self_link
-  network = "dataloop-raj-subnetwork" 
+  network = "k8s-private-subnet" 
   #subnetwork = google_compute_subnetwork.private.self_link
-  subnetwork = "dataloop-raj-subnetwork" 
+  subnetwork = "k8s-private-subnet" 
   #logging_service = "logging.googleapis.com/kubernetes"
   #monitoring_service = "monitoring.googleapis.com/kubernetes"
   networking_mode = "VPC_NATIVE"
@@ -37,8 +37,8 @@ resource "google_container_cluster" "k8s-cluster"{
     workload_pool = "dataloop-candidate-environment.svc.id.goog"
   }
   ip_allocation_policy{
-    cluster_secondary_range_name = "ip-range-pods"
-    services_secondary_range_name = "ip-range-svc"
+    cluster_secondary_range_name = "pod-ip-secondary-range"
+    services_secondary_range_name = "service-ip-secondary-range"
     #cluster_secondary_range_name = "10.160.0.0/21"
     #services_secondary_range_name = "10.160.8.0/21"
     #cluster_secondary_range_name = "default"
