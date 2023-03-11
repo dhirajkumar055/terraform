@@ -12,7 +12,7 @@ resource "google_container_cluster" "k8s-cluster"{
   remove_default_node_pool = true
   initial_node_count = 1
   #network = google_compute_network.main.self_link
-  network = "default" 
+  network = "dataloop-raj-subnetwork" 
   #subnetwork = google_compute_subnetwork.private.self_link
   #subnetwork = "default" 
   #logging_service = "logging.googleapis.com/kubernetes"
