@@ -14,7 +14,7 @@ resource "google_container_cluster" "k8s-cluster"{
   #network = google_compute_network.main.self_link
   network = "default" 
   #subnetwork = google_compute_subnetwork.private.self_link
-  subnetwork = "default" 
+  #subnetwork = "default" 
   #logging_service = "logging.googleapis.com/kubernetes"
   #monitoring_service = "monitoring.googleapis.com/kubernetes"
   networking_mode = "VPC_NATIVE"
