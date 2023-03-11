@@ -1,3 +1,11 @@
+resource "google_project_service" "compute" {
+  service = "compute.googleapis.com"
+}
+
+resource "google_project_service" "container" {
+  service = "container.googleapis.com"
+}
+
 resource "google_container_cluster" "k8s-cluster"{
   name = "dheeraj-company5-prod-gcp-k8s-cluster"
   location = "asia-south1-a"
@@ -30,9 +38,11 @@ resource "google_container_cluster" "k8s-cluster"{
   }
   ip_allocation_policy{
     #cluster_secondary_range_name = "k8s-pod-range"
-    cluster_secondary_range_name = "10.160.0.0/21"
-    services_secondary_range_name = "10.160.8.0/21"
+    #cluster_secondary_range_name = "10.160.0.0/21"
+    #services_secondary_range_name = "10.160.8.0/21"
     #services_secondary_range_naem = "k8s-service-range"
+    cluster_secondary_range_name = "default"
+    services_secondary_range_name = "default"
   }
   private_cluster_config{
     enable_private_nodes = true
