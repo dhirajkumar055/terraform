@@ -2,6 +2,9 @@ resource "kubernetes_pod" "pod-nginx" {
   metadata {
     name = "pod-nginx"
     namespace = "services"
+    labels = {
+      name = "pod-nginx"
+    }
   }
 
   spec {
@@ -9,9 +12,6 @@ resource "kubernetes_pod" "pod-nginx" {
       image = "nginx:1.21.6"
       name  = "container-nginx"
 
-      labels {
-        name = "pod-nginx"
-      }
       env {
         name  = "environment"
         value = "prod"
@@ -44,6 +44,9 @@ resource "kubernetes_pod" "pod-grafana" {
   metadata {
     name = "pod-grafana"
     namespace = "monitoring"
+    labels = {
+      name = "pod-grafana"
+    }
   }
 
   spec {
@@ -51,9 +54,6 @@ resource "kubernetes_pod" "pod-grafana" {
       image = "grafana/grafana"
       name  = "container-grafana"
 
-      labels {
-        name = "pod-grafana"
-      }
       env {
         name  = "environment"
         value = "prod"
@@ -85,16 +85,15 @@ resource "kubernetes_pod" "pod-prometheus" {
   metadata {
     name = "pod-prometheus"
     namespace = "monitoring"
+    labels = {
+      name = "pod-prometheus"
+    }
   }
 
   spec {
     container {
       image = "bitnami/prometheus"
       name  = "container-prometheus"
-
-      labels {
-        name = "pod-prometheus"
-      }
       env {
         name  = "environment"
         value = "prod"
