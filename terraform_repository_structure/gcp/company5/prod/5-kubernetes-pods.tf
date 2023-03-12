@@ -1,6 +1,6 @@
 resource "kubernetes_pod" "pod-nginx" {
   metadata {
-    name = "pod_nginx"
+    name = "pod-nginx"
     namespace = "services"
   }
 
