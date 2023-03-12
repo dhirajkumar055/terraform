@@ -9,7 +9,7 @@ resource "google_project_service" "container" {
 resource "google_container_cluster" "k8s-cluster"{
   name = "dheeraj-company5-prod-gcp-k8s-cluster"
   location = "us-east1-b"
-  #remove_default_node_pool = true
+  remove_default_node_pool = true
   initial_node_count = 1
   #network = google_compute_network.main.self_link
   #network = "default" 
@@ -19,9 +19,9 @@ resource "google_container_cluster" "k8s-cluster"{
   #monitoring_service = "monitoring.googleapis.com/kubernetes"
   #networking_mode = "ROUTES"
 
-  #node_locations = [
-  #  "us-east1-d"
-  #]
+  node_locations = [
+    "us-east1-d"
+  ]
   #addons_config {
     #http_load_balancing {
     #  disabled = true
@@ -33,20 +33,20 @@ resource "google_container_cluster" "k8s-cluster"{
   #release_channel{
   #  channel = "REGULAR"
   #}
-  #workload_identity_config{
-  #  workload_pool = "dataloop-candidate-environment.svc.id.goog"
-  #}
-  #ip_allocation_policy{
+  workload_identity_config{
+   workload_pool = "dataloop-candidate-environment.svc.id.goog"
+  }
+  ip_allocation_policy{
     #cluster_secondary_range_name = "pod-ip-secondary-range"
     #services_secondary_range_name = "service-ip-secondary-range"
     #cluster_secondary_range_name = "10.160.0.0/21"
     #services_secondary_range_name = "10.160.8.0/21"
     #cluster_secondary_range_name = "default"
     #services_secondary_range_name = "default"
-  #}
-  #private_cluster_config{
-  #  enable_private_nodes = true
-  #  enable_private_endpoint = false
-  #  master_ipv4_cidr_block = "172.16.0.0/28"
-  #}
+  }
+  private_cluster_config{
+    enable_private_nodes = true
+    enable_private_endpoint = false
+    master_ipv4_cidr_block = "172.16.0.0/28"
+  }
 }

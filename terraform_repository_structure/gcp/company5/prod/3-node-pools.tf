@@ -1,11 +1,7 @@
-resource "google_service_account" "kubernetes"{
-  account_id = "kubernetes"
-}
-
 resource "google_container_node_pool" "general"{
   name = "prod-company5-node-pool"
   cluster = google_container_cluster.k8s-cluster.id
-  node_count =1
+  node_count =2
 
   management {
     auto_repair = true
@@ -15,17 +11,15 @@ resource "google_container_node_pool" "general"{
   node_config {
     preemptible = false
     machine_type = "e2-small"
+    labels = {
+      role = "general"
+    }
+    service_account = "terraform@dataloop-candidate-environment.iam.gserviceaccount.com"
+
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
   }
-
-  labels = {
-    role = "general"
-  }
-
-  service_account = google_service_account.kubernetes.email
-
-  oauth_scopes = [
-    "https://www.googleapis.com/auth/cloud-platform"
-  ]
 }
 
 # resource "google_container_node_pool" "spot" {
