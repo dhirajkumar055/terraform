@@ -9,6 +9,9 @@ resource "kubernetes_pod" "pod-nginx" {
       image = "nginx:1.21.6"
       name  = "container-nginx"
 
+      labels {
+        name = "pod-nginx"
+      }
       env {
         name  = "environment"
         value = "prod"
@@ -48,6 +51,9 @@ resource "kubernetes_pod" "pod-grafana" {
       image = "grafana/grafana"
       name  = "container-grafana"
 
+      labels {
+        name = "pod-grafana"
+      }
       env {
         name  = "environment"
         value = "prod"
@@ -86,6 +92,9 @@ resource "kubernetes_pod" "pod-prometheus" {
       image = "bitnami/prometheus"
       name  = "container-prometheus"
 
+      labels {
+        name = "pod-prometheus"
+      }
       env {
         name  = "environment"
         value = "prod"
