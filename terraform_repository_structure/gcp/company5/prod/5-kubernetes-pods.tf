@@ -35,3 +35,42 @@ resource "kubernetes_pod" "pod-nginx" {
     }
   }
 }
+
+
+resource "kubernetes_pod" "pod-grafana" {
+  metadata {
+    name = "pod-grafana"
+    namespace = "monitoring"
+  }
+
+  spec {
+    container {
+      image = "grafana/grafana"
+      name  = "container-grafana"
+
+      env {
+        name  = "environment"
+        value = "prod"
+      }
+
+      port {
+        container_port = 3000
+      }
+
+      liveness_probe {
+        http_get {
+          path = "/"
+          port = 3000
+
+          http_header {
+            name  = "X-Custom-Header"
+            value = "Awesome"
+          }
+        }
+
+        initial_delay_seconds = 3
+        period_seconds        = 3
+      }
+    }
+  }
+}
