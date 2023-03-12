@@ -5,7 +5,7 @@ resource "kubernetes_service" "nginx" {
   }
   spec {
     selector = {
-      name = "nginx"
+      name = "pod-nginx"
     }
     session_affinity = "ClientIP"
     port {
@@ -24,7 +24,7 @@ resource "kubernetes_service" "grafana" {
   }
   spec {
     selector = {
-      name = "grafana"
+      name = "pod-grafana"
     }
     session_affinity = "ClientIP"
     port {
