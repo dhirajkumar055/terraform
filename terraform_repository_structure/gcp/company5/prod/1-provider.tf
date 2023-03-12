@@ -11,7 +11,6 @@ terraform {
     kubernetes = {
       source = "hashicorp/kubernetes"
       version = "2.18.1"
-      load_config_file = false
     }
   }
 }
@@ -20,4 +19,8 @@ provider "google" {
   # Configuration options
   project = "dataloop-candidate-environment"
   region  = "us-east1"
+}
+
+provider "kubernetes" {
+ load_config_file = false
 }
