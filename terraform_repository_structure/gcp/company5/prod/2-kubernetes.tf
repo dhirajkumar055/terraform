@@ -22,14 +22,6 @@ resource "google_container_cluster" "k8s-cluster"{
   node_locations = [
     "us-east1-d"
   ]
-  #addons_config {
-    #http_load_balancing {
-    #  disabled = true
-    #} 
-    #horizontal_pod_autoscaling {
-    #  disabled = false
-    #}
-  #}
   #release_channel{
   #  channel = "REGULAR"
   #}
