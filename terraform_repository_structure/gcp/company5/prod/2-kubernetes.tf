@@ -26,7 +26,7 @@ resource "google_container_cluster" "k8s-cluster"{
   #  channel = "REGULAR"
   #}
   workload_identity_config{
-   workload_pool = "dataloop-candidate-environment.svc.id.goog"
+   workload_pool = "${var.project}.svc.id.goog"
   }
   ip_allocation_policy{
     #cluster_secondary_range_name = "pod-ip-secondary-range"
