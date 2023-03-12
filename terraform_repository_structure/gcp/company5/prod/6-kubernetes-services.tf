@@ -9,7 +9,7 @@ resource "kubernetes_service" "nginx" {
     }
     session_affinity = "ClientIP"
     port {
-      port        = 8080
+      port        = 80
       target_port = 80
     }
 
@@ -28,8 +28,8 @@ resource "kubernetes_service" "grafana" {
     }
     session_affinity = "ClientIP"
     port {
-      port        = 8080
-      target_port = 80
+      port        = 80
+      target_port = 3000
     }
 
     type = "LoadBalancer"
