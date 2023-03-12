@@ -1,7 +1,8 @@
 resource "google_container_node_pool" "general"{
   name = "prod-company5-node-pool"
   cluster = google_container_cluster.k8s-cluster.id
-  node_count = 1  management {
+  node_count = 1
+  management {
     auto_repair = true
     auto_upgrade = true
   }
