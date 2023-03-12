@@ -1,0 +1,4 @@
+gcloud auth list
+gcloud config get-value project
+gcloud auth application-default login --no-launch-browser
+gcloud container clusters get-credentials dheeraj-company5-prod-gcp-k8s-cluster --zone us-east1-b --project dataloop-candidate-environment
