@@ -74,3 +74,41 @@ resource "kubernetes_pod" "pod-grafana" {
     }
   }
 }
+
+resource "kubernetes_pod" "pod-prometheus" {
+  metadata {
+    name = "pod-prometheus"
+    namespace = "monitoring"
+  }
+
+  spec {
+    container {
+      image = "bitnami/prometheus"
+      name  = "container-prometheus"
+
+      env {
+        name  = "environment"
+        value = "prod"
+      }
+
+      port {
+        container_port = 9090
+      }
+
+      liveness_probe {
+        http_get {
+          path = "/"
+          port = 9090
+
+          http_header {
+            name  = "X-Custom-Header"
+            value = "Awesome"
+          }
+        }
+
+        initial_delay_seconds = 3
+        period_seconds        = 3
+      }
+    }
+  }
+}
