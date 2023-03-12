@@ -16,7 +16,6 @@ resource "kubernetes_pod" "pod_nginx" {
 
       port {
         container_port = 80
-        port = 80
       }
 
       liveness_probe {
