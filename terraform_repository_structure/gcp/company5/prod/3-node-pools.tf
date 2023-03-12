@@ -4,7 +4,7 @@ resource "google_service_account" "kubernetes"{
 
 resource "google_container_node_pool" "general"{
   name = "prod-company5-node-pool"
-  cluster = google_container_cluster.primary.id
+  cluster = google_container_cluster.k8s-cluster.id
   node_count =1
 
   management {
