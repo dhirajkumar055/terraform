@@ -1,4 +1,5 @@
 resource "kubernetes_service" "nginx" {
+  depends_on = [null_resource.get-credentials]
   metadata {
     name = "svc-nginx"
     namespace = "services"
@@ -18,6 +19,7 @@ resource "kubernetes_service" "nginx" {
 }
 
 resource "kubernetes_service" "grafana" {
+  depends_on = [null_resource.get-credentials]
   metadata {
     name = "svc-grafana"
     namespace = "monitoring"

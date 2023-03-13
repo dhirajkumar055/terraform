@@ -1,4 +1,5 @@
 resource "kubernetes_pod" "pod-nginx" {
+  depends_on = [null_resource.get-credentials]
   metadata {
     name = "pod-nginx"
     namespace = "services"
@@ -41,6 +42,7 @@ resource "kubernetes_pod" "pod-nginx" {
 
 
 resource "kubernetes_pod" "pod-grafana" {
+  depends_on = [null_resource.get-credentials]
   metadata {
     name = "pod-grafana"
     namespace = "monitoring"
@@ -82,6 +84,7 @@ resource "kubernetes_pod" "pod-grafana" {
 }
 
 resource "kubernetes_pod" "pod-prometheus" {
+  depends_on = [null_resource.get-credentials]
   metadata {
     name = "pod-prometheus"
     namespace = "monitoring"
