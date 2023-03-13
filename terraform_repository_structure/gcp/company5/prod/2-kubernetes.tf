@@ -19,9 +19,6 @@ resource "google_container_cluster" "k8s-cluster"{
   #monitoring_service = "monitoring.googleapis.com/kubernetes"
   #networking_mode = "ROUTES"
 
-  node_locations = [
-    "us-east1-d"
-  ]
   #release_channel{
   #  channel = "REGULAR"
   #}
