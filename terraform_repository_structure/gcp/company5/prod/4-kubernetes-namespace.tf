@@ -1,6 +1,6 @@
 resource "null_resource" "get-credentials" {
 
- depends_on = [google_container_cluster.k8s-cluster] 
+ depends_on = [google_container_node_pool.general] 
  
  provisioner "local-exec" {
    command = "gcloud container clusters get-credentials ${google_container_cluster.k8s-cluster.name} --zone=us-east1-b --project dataloop-candidate-environment"
